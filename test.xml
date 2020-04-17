@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--adicionado o WERKS no mapping do join
+<!--removido todos os output do join _1
 
-... adicionou um novo input no project details
-... é criado um input para o link das tabelas.
 
+... criou um viewAttribute fake, e deixou escondido. reforçando a teoria que ele cria input para o link das tabelas.
+... o joinAttribute acredito que é para dizer qual é o atributo ou input que faz o vinculo
 
 
 
@@ -13,7 +13,7 @@
 <Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="TESTE_ALTERNATIVE" applyPrivilegeType="ANALYTIC_PRIVILEGE" checkAnalyticPrivileges="true" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" translationRelevant="true" visibility="reportingEnabled" calculationScenarioType="TREE_BASED" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation">
 	<origin/>
 	<descriptions defaultDescription="TESTE_ALTERNATIVE"/>
-	<metadata changedAt="2020-04-17 10:15:04.991"/>
+	<metadata changedAt="2020-04-17 10:21:00.52"/>
 	<localVariables/>
 	<variableMappings/>
 	<informationModelLayout relativeWidthScenario="40"/>
@@ -74,40 +74,21 @@
 		<calculationView xsi:type="Calculation:JoinView" id="Join_1" joinOrder="OUTSIDE_IN" joinType="leftOuter">
 			<descriptions/>
 			<viewAttributes>
-				<viewAttribute id="NPROJECT"/>
-				<viewAttribute id="plant_werks"/>
-				<viewAttribute id="MATNR"/>
-				<viewAttribute id="WERKS"/>
+				<viewAttribute hidden="true" id="JOIN$plant_werks$WERKS"/>
 			</viewAttributes>
 			<calculatedViewAttributes/>
 			<input node="#Projection_1">
-				<mapping xsi:type="Calculation:AttributeMapping" target="plant_werks" source="plant_werks"/>
-				<mapping xsi:type="Calculation:AttributeMapping" target="MATNR" source="MATNR"/>
+				<mapping xsi:type="Calculation:AttributeMapping" target="JOIN$plant_werks$WERKS" source="plant_werks"/>
 			</input>
 			<input node="#PROJECT_PLANTS_DETAILS">
-				<mapping xsi:type="Calculation:AttributeMapping" target="NPROJECT" source="NPROJECT"/>
-				<mapping xsi:type="Calculation:AttributeMapping" target="WERKS" source="WERKS"/>
-				<mapping xsi:type="Calculation:AttributeMapping" target="plant_werks" source="WERKS"/>
+				<mapping xsi:type="Calculation:AttributeMapping" target="JOIN$plant_werks$WERKS" source="WERKS"/>
 			</input>
-			<joinAttribute name="plant_werks"/>
+			<joinAttribute name="JOIN$plant_werks$WERKS"/>
 		</calculationView>
 	</calculationViews>
 	<logicalModel id="Join_1">
 		<descriptions/>
-		<attributes>
-			<attribute id="plant_werks" order="3" attributeHierarchyActive="false" displayAttribute="false">
-				<descriptions defaultDescription="plant_werks"/>
-				<keyMapping columnObjectName="Join_1" columnName="plant_werks"/>
-			</attribute>
-			<attribute id="MATNR" order="4" attributeHierarchyActive="false" displayAttribute="false">
-				<descriptions defaultDescription="MATNR"/>
-				<keyMapping columnObjectName="Join_1" columnName="MATNR"/>
-			</attribute>
-			<attribute id="NPROJECT" order="5" attributeHierarchyActive="false" displayAttribute="false">
-				<descriptions defaultDescription="Project Number"/>
-				<keyMapping columnObjectName="Join_1" columnName="NPROJECT"/>
-			</attribute>
-		</attributes>
+		<attributes/>
 		<calculatedAttributes>
 			<calculatedAttribute id="VAL_CODE" hidden="false" order="1" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
 				<descriptions defaultDescription="Validation Code"/>
