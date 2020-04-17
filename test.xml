@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--alterado WERKS do teste123 para plant_werks 
+<!--alterado label do VAL_CODE no semantic para Validation Code
 
-calculatedView teste123 teve as seguintes alterações
-... viewAttributes id passou ser plant_werks
-... input mapping target= plant_werks
-o que parece é que input é o mapeamento da entrada para o atributo de saida do node 
+... no logical model alterou o defaultDescription, o que chamou a atenção é que não encontrei os demais campos da saida da visão
 
-calculatedView Projection_1 teve as seguintes alterações
-... input mapping source= plant_werks
-reforçando a teoria input é o mapeamento da entrada para o atributo de saida do node
+
+
+
+
+
+
 -->
 <Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="TESTE_ALTERNATIVE" applyPrivilegeType="ANALYTIC_PRIVILEGE" checkAnalyticPrivileges="true" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" translationRelevant="true" visibility="reportingEnabled" calculationScenarioType="TREE_BASED" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation">
 	<origin/>
 	<descriptions defaultDescription="TESTE_ALTERNATIVE"/>
-	<metadata changedAt="2020-04-17 09:13:32.123"/>
+	<metadata changedAt="2020-04-17 09:24:56.493"/>
 	<localVariables/>
 	<variableMappings/>
 	<informationModelLayout relativeWidthScenario="40"/>
@@ -57,7 +57,7 @@ reforçando a teoria input é o mapeamento da entrada para o atributo de saida d
 		</attributes>
 		<calculatedAttributes>
 			<calculatedAttribute id="VAL_CODE" hidden="false" order="1" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
-				<descriptions defaultDescription="VAL_CODE"/>
+				<descriptions defaultDescription="Validation Code"/>
 				<keyCalculation datatype="VARCHAR" expressionLanguage="COLUMN_ENGINE" length="10">
 					<formula>'teste'</formula>
 				</keyCalculation>
