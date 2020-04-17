@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Estrutura inicial
+
+
+
+
+
+
+
+
+-->
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="TESTE_ALTERNATIVE" applyPrivilegeType="ANALYTIC_PRIVILEGE" checkAnalyticPrivileges="true" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" translationRelevant="true" visibility="reportingEnabled" calculationScenarioType="TREE_BASED" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation">
+	<origin/>
+	<descriptions defaultDescription="TESTE_ALTERNATIVE"/>
+	<metadata changedAt="2020-04-16 15:31:26.759"/>
+	<localVariables/>
+	<variableMappings/>
+	<informationModelLayout relativeWidthScenario="27"/>
+	<dataSources>
+		<DataSource id="MATERIAL_BOM_HEADER" type="CALCULATION_VIEW">
+			<viewAttributes allViewAttributes="true"/>
+			<resourceUri>/DataCleansing.MaterialData/calculationviews/MATERIAL_BOM_HEADER</resourceUri>
+		</DataSource>
+	</dataSources>
+	<calculationViews>
+		<calculationView xsi:type="Calculation:ProjectionView" id="teste123">
+			<descriptions/>
+			<viewAttributes>
+				<viewAttribute id="WERKS"/>
+				<viewAttribute id="MATNR"/>
+			</viewAttributes>
+			<calculatedViewAttributes/>
+			<input node="#MATERIAL_BOM_HEADER">
+				<mapping xsi:type="Calculation:AttributeMapping" target="WERKS" source="WERKS"/>
+				<mapping xsi:type="Calculation:AttributeMapping" target="MATNR" source="MATNR"/>
+			</input>
+		</calculationView>
+	</calculationViews>
+	<logicalModel id="teste123">
+		<descriptions/>
+		<attributes>
+			<attribute id="WERKS" order="3" attributeHierarchyActive="false" displayAttribute="false">
+				<descriptions defaultDescription="Plant"/>
+				<keyMapping columnObjectName="teste123" columnName="WERKS"/>
+			</attribute>
+			<attribute id="MATNR" order="4" attributeHierarchyActive="false" displayAttribute="false">
+				<descriptions defaultDescription="Material"/>
+				<keyMapping columnObjectName="teste123" columnName="MATNR"/>
+			</attribute>
+		</attributes>
+		<calculatedAttributes>
+			<calculatedAttribute id="VAL_CODE" hidden="false" order="1" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
+				<descriptions defaultDescription="VAL_CODE"/>
+				<keyCalculation datatype="VARCHAR" expressionLanguage="COLUMN_ENGINE" length="10">
+					<formula>'teste'</formula>
+				</keyCalculation>
+			</calculatedAttribute>
+		</calculatedAttributes>
+		<privateDataFoundation>
+			<tableProxies/>
+			<joins/>
+			<layout>
+				<shapes/>
+			</layout>
+		</privateDataFoundation>
+		<baseMeasures/>
+		<calculatedMeasures>
+			<measure id="VAL_COUNT" hidden="false" order="2" aggregationType="sum" measureType="simple" datatype="INTEGER" expressionLanguage="COLUMN_ENGINE">
+				<descriptions defaultDescription="VAL_COUNT"/>
+				<formula>1</formula>
+			</measure>
+		</calculatedMeasures>
+		<restrictedMeasures/>
+		<localDimensions/>
+	</logicalModel>
+	<layout>
+		<shapes>
+			<shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+				<upperLeftCorner x="40" y="85"/>
+				<rectangleSize height="0" width="0"/>
+			</shape>
+			<shape expanded="true" modelObjectName="teste123" modelObjectNameSpace="CalculationView">
+				<upperLeftCorner x="80" y="340"/>
+				<rectangleSize height="-1" width="-1"/>
+			</shape>
+		</shapes>
+	</layout>
+</Calculation:scenario>
