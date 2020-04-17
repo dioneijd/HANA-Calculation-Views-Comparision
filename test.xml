@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--adicionado aggregation_1 antes do projection_1
+<!--adicionado depois do projection_1, join_1 vinculando a visão PROJECT_PLANTS_DETAILS através do WERKS e plant_werks
 
-... como esperar adicionou um novo calculationView entre teste123 e projection_1
-... aparetemente essa nova calculationView tem as mesmas tags e comportamento das demais, somente tem um tipo diferente (AggregationView)
-... será que é assim para  join tbm???
+... adicionando uma nova DataSource, reforçando a teoria que ali esta todas as fontes externas da visão
+... como esperado adicionado uma nova calculationView, porem essa tem umas tags um pouco diferentes
+...... essa tem agora dois inputs... um para cada tabela do join
+...... tem um tag nova chamada joinAttribute, mas não entendi essa logica
 
 
-... ué... sumiu os attributes do logicalModel???!!! ops.... esquecido de adicionar eles na aggregation final
 
 
 -->
 <Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="TESTE_ALTERNATIVE" applyPrivilegeType="ANALYTIC_PRIVILEGE" checkAnalyticPrivileges="true" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" translationRelevant="true" visibility="reportingEnabled" calculationScenarioType="TREE_BASED" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation">
 	<origin/>
 	<descriptions defaultDescription="TESTE_ALTERNATIVE"/>
-	<metadata changedAt="2020-04-17 09:53:47.583"/>
+	<metadata changedAt="2020-04-17 10:03:09.926"/>
 	<localVariables/>
 	<variableMappings/>
 	<informationModelLayout relativeWidthScenario="40"/>
@@ -21,6 +21,10 @@
 		<DataSource id="MATERIAL_BOM_HEADER" type="CALCULATION_VIEW">
 			<viewAttributes allViewAttributes="true"/>
 			<resourceUri>/DataCleansing.MaterialData/calculationviews/MATERIAL_BOM_HEADER</resourceUri>
+		</DataSource>
+		<DataSource id="PROJECT_PLANTS_DETAILS" type="CALCULATION_VIEW">
+			<viewAttributes allViewAttributes="true"/>
+			<resourceUri>/DataCleansing.ProjectData/calculationviews/PROJECT_PLANTS_DETAILS</resourceUri>
 		</DataSource>
 	</dataSources>
 	<calculationViews>
@@ -67,10 +71,41 @@
 				<mapping xsi:type="Calculation:AttributeMapping" target="MATNR" source="MATNR"/>
 			</input>
 		</calculationView>
+		<calculationView xsi:type="Calculation:JoinView" id="Join_1" joinOrder="OUTSIDE_IN" joinType="inner">
+			<descriptions/>
+			<viewAttributes>
+				<viewAttribute id="NPROJECT"/>
+				<viewAttribute id="plant_werks"/>
+				<viewAttribute id="MATNR"/>
+			</viewAttributes>
+			<calculatedViewAttributes/>
+			<input node="#Projection_1">
+				<mapping xsi:type="Calculation:AttributeMapping" target="plant_werks" source="plant_werks"/>
+				<mapping xsi:type="Calculation:AttributeMapping" target="MATNR" source="MATNR"/>
+			</input>
+			<input node="#PROJECT_PLANTS_DETAILS">
+				<mapping xsi:type="Calculation:AttributeMapping" target="NPROJECT" source="NPROJECT"/>
+				<mapping xsi:type="Calculation:AttributeMapping" target="plant_werks" source="WERKS"/>
+			</input>
+			<joinAttribute name="plant_werks"/>
+		</calculationView>
 	</calculationViews>
-	<logicalModel id="Projection_1">
+	<logicalModel id="Join_1">
 		<descriptions/>
-		<attributes/>
+		<attributes>
+			<attribute id="plant_werks" order="3" attributeHierarchyActive="false" displayAttribute="false">
+				<descriptions defaultDescription="plant_werks"/>
+				<keyMapping columnObjectName="Join_1" columnName="plant_werks"/>
+			</attribute>
+			<attribute id="MATNR" order="4" attributeHierarchyActive="false" displayAttribute="false">
+				<descriptions defaultDescription="MATNR"/>
+				<keyMapping columnObjectName="Join_1" columnName="MATNR"/>
+			</attribute>
+			<attribute id="NPROJECT" order="5" attributeHierarchyActive="false" displayAttribute="false">
+				<descriptions defaultDescription="Project Number"/>
+				<keyMapping columnObjectName="Join_1" columnName="NPROJECT"/>
+			</attribute>
+		</attributes>
 		<calculatedAttributes>
 			<calculatedAttribute id="VAL_CODE" hidden="false" order="1" semanticType="empty" attributeHierarchyActive="false" displayAttribute="false">
 				<descriptions defaultDescription="Validation Code"/>
@@ -99,19 +134,23 @@
 	<layout>
 		<shapes>
 			<shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
-				<upperLeftCorner x="40" y="85"/>
+				<upperLeftCorner x="22" y="87"/>
 				<rectangleSize height="0" width="0"/>
 			</shape>
 			<shape expanded="true" modelObjectName="teste123" modelObjectNameSpace="CalculationView">
-				<upperLeftCorner x="60" y="420"/>
+				<upperLeftCorner x="22" y="419"/>
 				<rectangleSize height="-1" width="-1"/>
 			</shape>
 			<shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
-				<upperLeftCorner x="70" y="200"/>
+				<upperLeftCorner x="22" y="263"/>
 				<rectangleSize height="-1" width="-1"/>
 			</shape>
 			<shape expanded="true" modelObjectName="Aggregation_1" modelObjectNameSpace="CalculationView">
-				<upperLeftCorner x="80" y="281"/>
+				<upperLeftCorner x="22" y="341"/>
+				<rectangleSize height="-1" width="-1"/>
+			</shape>
+			<shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+				<upperLeftCorner x="22" y="165"/>
 				<rectangleSize height="-1" width="-1"/>
 			</shape>
 		</shapes>
