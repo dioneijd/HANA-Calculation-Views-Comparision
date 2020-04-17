@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--alterado o join de inner para left join
+<!--adicionado o WERKS no mapping do join
 
-... somente alterou o joinType="leftOuter"
-
+... adicionou um novo input no project details
+... é criado um input para o link das tabelas.
 
 
 
@@ -13,7 +13,7 @@
 <Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="TESTE_ALTERNATIVE" applyPrivilegeType="ANALYTIC_PRIVILEGE" checkAnalyticPrivileges="true" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" translationRelevant="true" visibility="reportingEnabled" calculationScenarioType="TREE_BASED" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation">
 	<origin/>
 	<descriptions defaultDescription="TESTE_ALTERNATIVE"/>
-	<metadata changedAt="2020-04-17 10:12:11.758"/>
+	<metadata changedAt="2020-04-17 10:15:04.991"/>
 	<localVariables/>
 	<variableMappings/>
 	<informationModelLayout relativeWidthScenario="40"/>
@@ -77,6 +77,7 @@
 				<viewAttribute id="NPROJECT"/>
 				<viewAttribute id="plant_werks"/>
 				<viewAttribute id="MATNR"/>
+				<viewAttribute id="WERKS"/>
 			</viewAttributes>
 			<calculatedViewAttributes/>
 			<input node="#Projection_1">
@@ -85,6 +86,7 @@
 			</input>
 			<input node="#PROJECT_PLANTS_DETAILS">
 				<mapping xsi:type="Calculation:AttributeMapping" target="NPROJECT" source="NPROJECT"/>
+				<mapping xsi:type="Calculation:AttributeMapping" target="WERKS" source="WERKS"/>
 				<mapping xsi:type="Calculation:AttributeMapping" target="plant_werks" source="WERKS"/>
 			</input>
 			<joinAttribute name="plant_werks"/>
