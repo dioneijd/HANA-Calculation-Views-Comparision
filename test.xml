@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-Estrutura inicial
+<!--adicionado projection 1
 
+logical model alterou de teste123 para projection, ou seja, parece que o logical model é o ultimo node sempre
 
-
+apareceu um novo calculation view, o que parece que no calculation view fica armazenado os nodes
 
 
 
@@ -13,10 +13,10 @@ Estrutura inicial
 <Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="TESTE_ALTERNATIVE" applyPrivilegeType="ANALYTIC_PRIVILEGE" checkAnalyticPrivileges="true" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" translationRelevant="true" visibility="reportingEnabled" calculationScenarioType="TREE_BASED" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation">
 	<origin/>
 	<descriptions defaultDescription="TESTE_ALTERNATIVE"/>
-	<metadata changedAt="2020-04-16 15:31:26.759"/>
+	<metadata changedAt="2020-04-17 08:54:58.793"/>
 	<localVariables/>
 	<variableMappings/>
-	<informationModelLayout relativeWidthScenario="27"/>
+	<informationModelLayout relativeWidthScenario="40"/>
 	<dataSources>
 		<DataSource id="MATERIAL_BOM_HEADER" type="CALCULATION_VIEW">
 			<viewAttributes allViewAttributes="true"/>
@@ -36,17 +36,29 @@ Estrutura inicial
 				<mapping xsi:type="Calculation:AttributeMapping" target="MATNR" source="MATNR"/>
 			</input>
 		</calculationView>
+		<calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+			<descriptions/>
+			<viewAttributes>
+				<viewAttribute id="WERKS"/>
+				<viewAttribute id="MATNR"/>
+			</viewAttributes>
+			<calculatedViewAttributes/>
+			<input node="#teste123">
+				<mapping xsi:type="Calculation:AttributeMapping" target="WERKS" source="WERKS"/>
+				<mapping xsi:type="Calculation:AttributeMapping" target="MATNR" source="MATNR"/>
+			</input>
+		</calculationView>
 	</calculationViews>
-	<logicalModel id="teste123">
+	<logicalModel id="Projection_1">
 		<descriptions/>
 		<attributes>
 			<attribute id="WERKS" order="3" attributeHierarchyActive="false" displayAttribute="false">
-				<descriptions defaultDescription="Plant"/>
-				<keyMapping columnObjectName="teste123" columnName="WERKS"/>
+				<descriptions defaultDescription="WERKS"/>
+				<keyMapping columnObjectName="Projection_1" columnName="WERKS"/>
 			</attribute>
 			<attribute id="MATNR" order="4" attributeHierarchyActive="false" displayAttribute="false">
-				<descriptions defaultDescription="Material"/>
-				<keyMapping columnObjectName="teste123" columnName="MATNR"/>
+				<descriptions defaultDescription="MATNR"/>
+				<keyMapping columnObjectName="Projection_1" columnName="MATNR"/>
 			</attribute>
 		</attributes>
 		<calculatedAttributes>
@@ -82,6 +94,10 @@ Estrutura inicial
 			</shape>
 			<shape expanded="true" modelObjectName="teste123" modelObjectNameSpace="CalculationView">
 				<upperLeftCorner x="80" y="340"/>
+				<rectangleSize height="-1" width="-1"/>
+			</shape>
+			<shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+				<upperLeftCorner x="110" y="220"/>
 				<rectangleSize height="-1" width="-1"/>
 			</shape>
 		</shapes>
