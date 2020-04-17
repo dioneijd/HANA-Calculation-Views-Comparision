@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--adicionado depois do projection_1, join_1 vinculando a visão PROJECT_PLANTS_DETAILS através do WERKS e plant_werks
+<!--alterado o join de inner para left join
 
-... adicionando uma nova DataSource, reforçando a teoria que ali esta todas as fontes externas da visão
-... como esperado adicionado uma nova calculationView, porem essa tem umas tags um pouco diferentes
-...... essa tem agora dois inputs... um para cada tabela do join
-...... tem um tag nova chamada joinAttribute, mas não entendi essa logica
+... somente alterou o joinType="leftOuter"
+
+
+
 
 
 
@@ -13,7 +13,7 @@
 <Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="TESTE_ALTERNATIVE" applyPrivilegeType="ANALYTIC_PRIVILEGE" checkAnalyticPrivileges="true" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" translationRelevant="true" visibility="reportingEnabled" calculationScenarioType="TREE_BASED" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation">
 	<origin/>
 	<descriptions defaultDescription="TESTE_ALTERNATIVE"/>
-	<metadata changedAt="2020-04-17 10:03:09.926"/>
+	<metadata changedAt="2020-04-17 10:12:11.758"/>
 	<localVariables/>
 	<variableMappings/>
 	<informationModelLayout relativeWidthScenario="40"/>
@@ -71,7 +71,7 @@
 				<mapping xsi:type="Calculation:AttributeMapping" target="MATNR" source="MATNR"/>
 			</input>
 		</calculationView>
-		<calculationView xsi:type="Calculation:JoinView" id="Join_1" joinOrder="OUTSIDE_IN" joinType="inner">
+		<calculationView xsi:type="Calculation:JoinView" id="Join_1" joinOrder="OUTSIDE_IN" joinType="leftOuter">
 			<descriptions/>
 			<viewAttributes>
 				<viewAttribute id="NPROJECT"/>
