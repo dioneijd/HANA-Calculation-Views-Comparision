@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--adicionado projection 1
+<!--removido MATNR da projection 1
 
-logical model alterou de teste123 para projection, ou seja, parece que o logical model é o ultimo node sempre
-
-apareceu um novo calculation view, o que parece que no calculation view fica armazenado os nodes
+calculation view teste123 não teve alteração
+calculation view projection_1 não tem mais o MATNR
+.... foi removido da  viewAttributes e tbm input.mapping
 
 
 
@@ -13,7 +13,7 @@ apareceu um novo calculation view, o que parece que no calculation view fica arm
 <Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="TESTE_ALTERNATIVE" applyPrivilegeType="ANALYTIC_PRIVILEGE" checkAnalyticPrivileges="true" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" translationRelevant="true" visibility="reportingEnabled" calculationScenarioType="TREE_BASED" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation">
 	<origin/>
 	<descriptions defaultDescription="TESTE_ALTERNATIVE"/>
-	<metadata changedAt="2020-04-17 08:54:58.793"/>
+	<metadata changedAt="2020-04-17 09:05:24.298"/>
 	<localVariables/>
 	<variableMappings/>
 	<informationModelLayout relativeWidthScenario="40"/>
@@ -40,12 +40,10 @@ apareceu um novo calculation view, o que parece que no calculation view fica arm
 			<descriptions/>
 			<viewAttributes>
 				<viewAttribute id="WERKS"/>
-				<viewAttribute id="MATNR"/>
 			</viewAttributes>
 			<calculatedViewAttributes/>
 			<input node="#teste123">
 				<mapping xsi:type="Calculation:AttributeMapping" target="WERKS" source="WERKS"/>
-				<mapping xsi:type="Calculation:AttributeMapping" target="MATNR" source="MATNR"/>
 			</input>
 		</calculationView>
 	</calculationViews>
@@ -55,10 +53,6 @@ apareceu um novo calculation view, o que parece que no calculation view fica arm
 			<attribute id="WERKS" order="3" attributeHierarchyActive="false" displayAttribute="false">
 				<descriptions defaultDescription="WERKS"/>
 				<keyMapping columnObjectName="Projection_1" columnName="WERKS"/>
-			</attribute>
-			<attribute id="MATNR" order="4" attributeHierarchyActive="false" displayAttribute="false">
-				<descriptions defaultDescription="MATNR"/>
-				<keyMapping columnObjectName="Projection_1" columnName="MATNR"/>
 			</attribute>
 		</attributes>
 		<calculatedAttributes>
